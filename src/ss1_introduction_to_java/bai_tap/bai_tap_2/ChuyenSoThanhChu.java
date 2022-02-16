@@ -7,7 +7,9 @@ public class ChuyenSoThanhChu {
         String str = "";
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập số cần chuyển: ");
+
         int number = scanner.nextInt();
+//        int number = Integer.parseInt(scanner.nextLine());
         // n = 546
         //int tram ->  n / 10o
         //int chuc ->  (n % 100) / 10
@@ -63,55 +65,55 @@ public class ChuyenSoThanhChu {
                         str += "eleven";
                         break;
                     case 2:
-                        str += "Twelve";
+                        str += "twelve";
                         break;
                     case 3:
-                        str += "Thirteen";
+                        str += "thirteen";
                         break;
                     case 4:
-                        str += "Fourteen";
+                        str += "fourteen";
                         break;
                     case 5:
-                        str += "Fifteen";
+                        str += "fifteen";
                         break;
                     case 6:
-                        str += "Sixteen";
+                        str += "sixteen";
                         break;
                     case 7:
-                        str += "Seventeen";
+                        str += "seventeen";
                         break;
                     case 8:
-                        str += "Eighteen";
+                        str += "eighteen";
                         break;
                     case 9:
-                        str += "Nineteen";
+                        str += "nineteen";
                         break;
                 }
             } else {
                 switch (chuc) {
                     case 2:
-                        str += "Twenty ";
+                        str += "twenty ";
                         break;
                     case 3:
-                        str += "Thirty ";
+                        str += "thirty ";
                         break;
                     case 4:
-                        str += "Forty ";
+                        str += "forty ";
                         break;
                     case 5:
-                        str += "Fifty ";
+                        str += "fifty ";
                         break;
                     case 6:
-                        str += "Sixty ";
+                        str += "sixty ";
                         break;
                     case 7:
-                        str += "Seventy ";
+                        str += "seventy ";
                         break;
                     case 8:
-                        str += "Eighty ";
+                        str += "eighty ";
                         break;
                     case 9:
-                        str += "Ninety ";
+                        str += "ninety ";
                         break;
                 }
                 switch (donvi) {
@@ -149,5 +151,6 @@ public class ChuyenSoThanhChu {
         System.out.println(str);
         System.out.println(chuc);
         System.out.println(donvi);
+//        System.out.printf("%.2f",9.8);
     }
 }
