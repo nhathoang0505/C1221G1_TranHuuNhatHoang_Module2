@@ -9,18 +9,18 @@ public class KiemTra100NguyenTo {
         System.out.printf("Kiểm tra số nguyên tố từ 2 đến ?: ");
         int soLuong = Integer.parseInt(scanner.nextLine());
         int count = 1;
-        int N = 2;
-        System.out.println(N + " là số nguyên tố");
+        int n = 2;
+        System.out.println(n + " là số nguyên tố");
         while (count < soLuong) {
             for (int i = 2; i < soLuong; i++) {
-                if (N % i == 0) {
+                if (n % i == 0) {
                     break;
-                } else if (i == N - 1) {
-                    System.out.println(N + " là số nguyên tố");
+                } else if (i == n - 1) {
+                    System.out.println(n + " là số nguyên tố");
                     count++;
                 }
             }
-            N++;
+            n++;
         }
     }
 }
