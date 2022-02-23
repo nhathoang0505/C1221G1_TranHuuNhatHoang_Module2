@@ -1,4 +1,4 @@
-package ss4_class_and_object_in_java.bai_tap.xay_dung_lop_topwatch;
+package ss4_class_and_object_in_java.bai_tap.xay_dung_lop_stop_watch;
 
 
 public class Main {
