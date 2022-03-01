@@ -28,5 +28,6 @@ public class DemoEverything {
             System.out.println();
 
         }
+
     }
 }
