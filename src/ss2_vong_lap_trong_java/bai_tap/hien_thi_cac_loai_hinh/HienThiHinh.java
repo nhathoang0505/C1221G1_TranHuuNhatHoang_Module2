@@ -6,7 +6,7 @@ public class HienThiHinh {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
-        while (choice != 4) {
+        while (true) {
             System.out.println("Menu");
             System.out.println("1. Print the rectangle");
             System.out.println("2. Print the square triangle " +

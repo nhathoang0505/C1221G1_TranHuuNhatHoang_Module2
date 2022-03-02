@@ -3,7 +3,7 @@ package oop_review.oop_java_1.account_banking_management;
 import java.util.Scanner;
 
 public class Account {
-    public final double LAISUAT = 0.035;
+    public final double LAI_SUAT = 0.035;
     private long soTaiKhoan;
     private String tenTaiKhoan;
     private double tien;
@@ -52,7 +52,7 @@ public class Account {
     }
 
     double daoHan() {
-        tien = tien + tien * LAISUAT;
+        tien = tien + tien * LAI_SUAT;
         return tien;
     }
 
