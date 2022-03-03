@@ -1,7 +1,5 @@
 package bai_tap_lam_them_anh_chanh;
 
-import ss11_map_and_tree.bai_tap.luyen_tap_su_dung_arraylist_linkedlist.Product;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
