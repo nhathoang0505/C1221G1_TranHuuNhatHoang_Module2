@@ -1,27 +1,27 @@
 package case_study.models;
 
 public class Customer extends Person {
-    private String customerId;
+    private String customerID;
     private String customerRank;
     private String address;
 
-    public Customer(String personName, String sex, int personIDNumber, long phoneNumber, String personEmail) {
+    public Customer(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail) {
         super(personName, sex, personIDNumber, phoneNumber, personEmail);
     }
 
-    public Customer(String personName, String sex, int personIDNumber, long phoneNumber, String personEmail, String customerId, String customerRank, String address) {
+    public Customer(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail, String customerID, String customerRank, String address) {
         super(personName, sex, personIDNumber, phoneNumber, personEmail);
-        this.customerId = customerId;
+        this.customerID = customerID;
         this.customerRank = customerRank;
         this.address = address;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public String getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
     }
 
     public String getCustomerRank() {
@@ -42,8 +42,8 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerId='" + customerId + '\'' +
+        return "Customer{" + super.toString()+
+                "customerId='" + customerID + '\'' +
                 ", customerRank='" + customerRank + '\'' +
                 ", address='" + address + '\'' +
                 '}';

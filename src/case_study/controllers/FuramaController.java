@@ -1,9 +1,66 @@
 package case_study.controllers;
 
+import case_study.services.ipml.CustomerServiceImpl;
+import case_study.services.ipml.EmployeeServiceImpl;
+
 import java.util.Scanner;
 
 public class FuramaController {
+    EmployeeServiceImpl employeeService = new EmployeeServiceImpl();
+    CustomerServiceImpl customerService = new CustomerServiceImpl();
     Scanner scanner = new Scanner(System.in);
+
+    public void EmployeeManageMent() {
+        int choice = -1;
+        do {
+            System.out.println("EMPLOYEE MANAGEMENT");
+            System.out.println("1\tDisplay list employees\n" +
+                    "2\tAdd new employee\n" +
+                    "3\tEdit employee\n" +
+                    "4\tReturn main menu\n");
+            System.out.println("Enter your number: ");
+            choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    employeeService.display();
+                    break;
+                case 2:
+                    employeeService.add();
+                    break;
+                case 3:
+                    employeeService.edit();
+                    break;
+                case 4:
+                    break;
+            }
+        } while (true);
+    }
+
+    public void customerManagement() {
+        int choice = -1;
+        do {
+            System.out.println("CUSTOMER MANAGEMENT");
+            System.out.println("1.\tDisplay list customers\n" +
+                    "2.\tAdd new customer\n" +
+                    "3.\tEdit customer\n" +
+                    "4.\tReturn main menu\n");
+            choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    customerService.display();
+                    break;
+                case 2:
+                    customerService.add();
+                    break;
+                case 3:
+                    customerService.edit();
+                    break;
+                case 4:
+                    break;
+            }
+        } while (true);
+    }
+
     public void displayMainMenu() {
         int choice = -1;
         do {
@@ -19,18 +76,10 @@ public class FuramaController {
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    System.out.println("EMPLOYEE MANAGEMENT");
-                    System.out.println("1\tDisplay list employees\n" +
-                            "2\tAdd new employee\n" +
-                            "3\tEdit employee\n" +
-                            "4\tReturn main menu\n");
+                    EmployeeManageMent();
                     break;
                 case 2:
-                    System.out.println("CUSTOMER MANAGEMENT");
-                    System.out.println("1.\tDisplay list customers\n" +
-                            "2.\tAdd new customer\n" +
-                            "3.\tEdit customer\n" +
-                            "4.\tReturn main menu\n");
+                    customerManagement();
                     break;
                 case 3:
                     System.out.println("FACILITY MANAGEMENT");
@@ -59,7 +108,7 @@ public class FuramaController {
                 default:
                     System.out.println("No choice!");
             }
-        }while (true);
+        } while (true);
     }
 }
 

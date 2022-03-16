@@ -6,11 +6,11 @@ public class Employee extends Person {
     private String position;
     private double salary;
 
-    public Employee(String personName, String sex, int personIDNumber, long phoneNumber, String personEmail) {
+    public Employee(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail) {
         super(personName, sex, personIDNumber, phoneNumber, personEmail);
     }
 
-    public Employee(String personName, String sex, int personIDNumber, long phoneNumber, String personEmail, String employeeID, String academicLevel, String position, double salary) {
+    public Employee(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail, String employeeID, String academicLevel, String position, double salary) {
         super(personName, sex, personIDNumber, phoneNumber, personEmail);
         this.employeeID = employeeID;
         this.academicLevel = academicLevel;
@@ -52,7 +52,7 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Employee{" + super.toString() +
                 "employeeID='" + employeeID + '\'' +
                 ", academicLevel='" + academicLevel + '\'' +
                 ", position='" + position + '\'' +

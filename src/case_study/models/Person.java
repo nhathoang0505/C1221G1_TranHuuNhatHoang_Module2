@@ -4,10 +4,10 @@ public abstract class Person {
     private String personName;
     private String sex;
     private int personIDNumber;
-    private long phoneNumber;
+    private int phoneNumber;
     private String personEmail;
 
-    public Person(String personName, String sex, int personIDNumber, long phoneNumber, String personEmail) {
+    public Person(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail) {
         this.personName = personName;
         this.sex = sex;
         this.personIDNumber = personIDNumber;
@@ -39,11 +39,11 @@ public abstract class Person {
         this.personIDNumber = personIDNumber;
     }
 
-    public long getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -57,12 +57,11 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return
                 "personName='" + personName + '\'' +
                 ", sex='" + sex + '\'' +
                 ", personIDNumber=" + personIDNumber +
                 ", phoneNumber=" + phoneNumber +
-                ", personEmail='" + personEmail + '\'' +
-                '}';
+                ", personEmail='" + personEmail + '\'' + ",";
     }
 }
