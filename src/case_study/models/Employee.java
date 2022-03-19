@@ -6,16 +6,20 @@ public class Employee extends Person {
     private String position;
     private double salary;
 
-    public Employee(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail) {
-        super(personName, sex, personIDNumber, phoneNumber, personEmail);
+    public Employee(String personName, String gender, int personIDNumber, int phoneNumber, String personEmail) {
+        super(personName, gender, personIDNumber, phoneNumber, personEmail);
     }
 
-    public Employee(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail, String employeeID, String academicLevel, String position, double salary) {
-        super(personName, sex, personIDNumber, phoneNumber, personEmail);
+    public Employee(String personName, String gender, int personIDNumber, int phoneNumber, String personEmail, String employeeID, String academicLevel, String position, double salary) {
+        super(personName, gender, personIDNumber, phoneNumber, personEmail);
         this.employeeID = employeeID;
         this.academicLevel = academicLevel;
         this.position = position;
         this.salary = salary;
+    }
+
+    public String getInfoToCSV() {
+        return super.getInfoToCSV() + "," + this.employeeID + "," + this.academicLevel + "," + this.position + "," + this.salary;
     }
 
     public String getEmployeeID() {

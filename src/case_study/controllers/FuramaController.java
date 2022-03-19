@@ -1,8 +1,8 @@
 package case_study.controllers;
 
-import case_study.services.ipml.CustomerServiceImpl;
-import case_study.services.ipml.EmployeeServiceImpl;
-import case_study.services.ipml.FacilityServiceImpl;
+import case_study.services.impl.CustomerServiceImpl;
+import case_study.services.impl.EmployeeServiceImpl;
+import case_study.services.impl.FacilityServiceImpl;
 
 import java.util.Scanner;
 
@@ -19,7 +19,7 @@ public class FuramaController {
                 "2\tAdd new employee\n" +
                 "3\tEdit employee\n" +
                 "4\tReturn main menu\n");
-        System.out.println("Enter your number: ");
+        System.out.print("Enter your number: ");
         choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
@@ -120,7 +120,7 @@ public class FuramaController {
                     "5. Promotion Management\n" +
                     "6. Exit\n" +
                     "(Please choose a number for accessing to these functions).");
-            System.out.println("Enter your number: ");
+            System.out.print("Enter your number: ");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:

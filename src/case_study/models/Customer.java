@@ -5,8 +5,8 @@ public class Customer extends Person {
     private String customerRank;
     private String address;
 
-    public Customer(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail) {
-        super(personName, sex, personIDNumber, phoneNumber, personEmail);
+    public Customer(String personName, String gender, int personIDNumber, int phoneNumber, String personEmail) {
+        super(personName, gender, personIDNumber, phoneNumber, personEmail);
     }
 
     public Customer(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail, String customerID, String customerRank, String address) {
@@ -14,6 +14,10 @@ public class Customer extends Person {
         this.customerID = customerID;
         this.customerRank = customerRank;
         this.address = address;
+    }
+
+    public String getInfoToCSV() {
+        return super.getInfoToCSV() + "," + this.customerID + "," + this.customerRank + "," + this.address;
     }
 
     public String getCustomerID() {
@@ -42,7 +46,7 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" + super.toString()+
+        return "Customer{" + super.toString() +
                 "customerId='" + customerID + '\'' +
                 ", customerRank='" + customerRank + '\'' +
                 ", address='" + address + '\'' +

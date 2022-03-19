@@ -1,31 +1,33 @@
-package case_study.services.ipml;
+package case_study.services.impl;
 
 import case_study.models.Employee;
 import case_study.services.IEmployeeService;
+import case_study.utils.ReadAndWriteFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements IEmployeeService {
+    public static final String EMPLOYEE_PATH = "src\\case_study\\data\\employee.csv";
     static List<Employee> employeeList = new ArrayList<>();
 
     static {
-        employeeList.add(new Employee("Phan An", "male", 1608, 0511, "phanan@gmail.com", "An168", "Graduated", "Receptionist", 5000));
-        employeeList.add(new Employee("Thanh Nghia", "male", 2601, 0522, "nghia@gmail.com", "Nghia261", "Graduated", "Receptionist", 5000));
+
+        employeeList = ReadAndWriteFile.readEmployeeListFromCSV(EMPLOYEE_PATH);
     }
 
     Scanner scanner = new Scanner(System.in);
 
     @Override
     public void edit() {
-        System.out.println("Please input the ID of employee that want to edit:");
+        System.out.print("Please input the ID of employee that want to edit: ");
         int idEmployeeNeedToFind = Integer.parseInt(scanner.nextLine());
         for (Employee employeeEdit : employeeList) {
-            if (idEmployeeNeedToFind==(employeeEdit.getPersonIDNumber())) {
-                System.out.println("Input information you want to edit\n" +
+            if (idEmployeeNeedToFind == (employeeEdit.getPersonIDNumber())) {
+                System.out.print("Input information you want to edit\n" +
                         "1. Edit employee name:\n" +
-                        "2. Edit employee sex:\n" +
+                        "2. Edit employee gender:\n" +
                         "3. Edit employee ID Number:\n" +
                         "4. Edit employee phone Number:\n" +
                         "5. Edit employee email:\n" +
@@ -35,79 +37,81 @@ public class EmployeeServiceImpl implements IEmployeeService {
                         "9. Edit employee salary:\n" +
                         "10. Exit\n" +
                         "(Please choose a number for accessing to these functions).");
-                System.out.println("Enter your number: ");
+                System.out.print("Enter your number: ");
                 int choice;
                 choice = Integer.parseInt(scanner.nextLine());
                 switch (choice) {
                     case 1:
-                        System.out.println("Input new NAME for Employee:");
+                        System.out.print("Input new NAME for Employee: ");
                         employeeEdit.setPersonName(scanner.nextLine());
                         break;
                     case 2:
-                        System.out.println("Input new GENDER for Employee:");
-                        employeeEdit.setSex(scanner.nextLine());
+                        System.out.print("Input new GENDER for Employee: ");
+                        employeeEdit.setGender(scanner.nextLine());
                         break;
                     case 3:
-                        System.out.println("Input new ID NUMBER for Employee:");
+                        System.out.print("Input new ID NUMBER for Employee: ");
                         employeeEdit.setPersonIDNumber(Integer.parseInt(scanner.nextLine()));
                         break;
                     case 4:
-                        System.out.println("Input new PHONE number for Employee:");
+                        System.out.print("Input new PHONE number for Employee: ");
                         employeeEdit.setPhoneNumber(Integer.parseInt(scanner.nextLine()));
                         break;
                     case 5:
-                        System.out.println("Input new EMAIL for Employee:");
+                        System.out.print("Input new EMAIL for Employee: ");
                         employeeEdit.setPersonEmail(scanner.nextLine());
                         break;
                     case 6:
-                        System.out.println("Input new IDENTIFY CODE for Employee:");
+                        System.out.print("Input new IDENTIFY CODE for Employee: ");
                         employeeEdit.setEmployeeID(scanner.nextLine());
                         break;
                     case 7:
-                        System.out.println("Input new ACADEMIC LEVEL for Employee: ");
+                        System.out.print("Input new ACADEMIC LEVEL for Employee: ");
                         employeeEdit.setAcademicLevel(scanner.nextLine());
                         break;
                     case 8:
-                        System.out.println("Input new POSITION for Employee:");
+                        System.out.print("Input new POSITION for Employee: ");
                         employeeEdit.setPosition(scanner.nextLine());
                         break;
                     case 9:
-                        System.out.println("Input new SALARY for Employee: ");
+                        System.out.print("Input new SALARY for Employee: ");
                         employeeEdit.setSalary(Double.parseDouble(scanner.nextLine()));
                         break;
                     case 10:
                         System.exit(10);
                         break;
                     default:
-                        System.out.println("NO CHOICE!");
+                        System.out.print("NO CHOICE!");
                 }
                 break;
             }
         }
+        ReadAndWriteFile.writeListEmployeeToCSV(EMPLOYEE_PATH, employeeList);
     }
 
     @Override
     public void add() {
-        System.out.println("Input employee Name:");
+        System.out.print("Input employee Name: ");
         String employeeName = scanner.nextLine();
-        System.out.println("Input employee gender:");
+        System.out.print("Input employee GENDER: ");
         String employeSex = scanner.nextLine();
-        System.out.println("Input employee ID Number:");
+        System.out.print("Input employee ID Number: ");
         int employeeIDNumber = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input employee phone number:");
+        System.out.print("Input employee phone number: ");
         int employeePhoneNumber = Integer.parseInt(scanner.nextLine());
-        System.out.println("Input employee email:");
+        System.out.print("Input employee email: ");
         String employeeEmail = scanner.nextLine();
-        System.out.println("Input employee Identify Card:");
+        System.out.print("Input employee Identify Card: ");
         String employeeID = scanner.nextLine();
-        System.out.println("Input employee academic level:");
+        System.out.print("Input employee academic level: ");
         String academicLevel = scanner.nextLine();
-        System.out.println("Input employee position:");
+        System.out.print("Input employee position: ");
         String position = scanner.nextLine();
-        System.out.println("Input employee salary:");
+        System.out.print("Input employee salary: ");
         double salary = Double.parseDouble(scanner.nextLine());
         Employee employee = new Employee(employeeName, employeSex, employeeIDNumber, employeePhoneNumber, employeeEmail, employeeID, academicLevel, position, salary);
         employeeList.add(employee);
+        ReadAndWriteFile.writeListEmployeeToCSV(EMPLOYEE_PATH, employeeList);
         //String personName, String sex, int personIDNumber, int phoneNumber, String personEmail, String employeeID, String academicLevel, String position, double salary
     }
 

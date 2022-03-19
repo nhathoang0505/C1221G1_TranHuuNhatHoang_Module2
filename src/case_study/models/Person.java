@@ -2,18 +2,24 @@ package case_study.models;
 
 public abstract class Person {
     private String personName;
-    private String sex;
+    private String gender;
     private int personIDNumber;
     private int phoneNumber;
     private String personEmail;
 
-    public Person(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail) {
+    public Person(String personName, String gender, int personIDNumber, int phoneNumber, String personEmail) {
         this.personName = personName;
-        this.sex = sex;
+        this.gender = gender;
         this.personIDNumber = personIDNumber;
         this.phoneNumber = phoneNumber;
         this.personEmail = personEmail;
     }
+
+
+    public String getInfoToCSV() {
+        return this.personName + "," + this.gender + "," + this.personIDNumber + "," + this.phoneNumber + "," + this.personEmail;
+    }
+
 
     public String getPersonName() {
         return personName;
@@ -23,12 +29,12 @@ public abstract class Person {
         this.personName = personName;
     }
 
-    public String getSex() {
-        return sex;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public int getPersonIDNumber() {
@@ -59,9 +65,9 @@ public abstract class Person {
     public String toString() {
         return
                 "personName='" + personName + '\'' +
-                ", sex='" + sex + '\'' +
-                ", personIDNumber=" + personIDNumber +
-                ", phoneNumber=" + phoneNumber +
-                ", personEmail='" + personEmail + '\'' + ",";
+                        ", sex='" + gender + '\'' +
+                        ", personIDNumber=" + personIDNumber +
+                        ", phoneNumber=" + phoneNumber +
+                        ", personEmail='" + personEmail + '\'' + ",";
     }
 }
