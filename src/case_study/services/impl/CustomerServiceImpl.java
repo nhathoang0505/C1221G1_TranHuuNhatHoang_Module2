@@ -39,7 +39,7 @@ public class CustomerServiceImpl implements ICustomerService {
         String customerAddress = scanner.nextLine();
         Customer customer = new Customer(customerName, customerSex, customerIDNumber, customerPhoneNumber, customerEmail, customerID, customerRank, customerAddress);
         customerList.add(customer);
-        ReadAndWriteFile.writeListCustomerToCSV(CUSTOMER_PATH,customerList);
+        ReadAndWriteFile.writeListCustomerToCSV(CUSTOMER_PATH, customerList);
     }
 
     @Override

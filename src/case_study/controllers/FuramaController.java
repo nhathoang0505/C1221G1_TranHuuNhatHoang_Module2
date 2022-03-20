@@ -111,46 +111,52 @@ public class FuramaController {
 
     public void displayMainMenu() {
         int choice = -1;
+        System.out.println("FURAMA MANAGEMENT SYSTEM\n" +
+                "1. Employee Management\n" +
+                "2. Customer Management\n" +
+                "3. Facility Management\n" +
+                "4. Booking Management\n" +
+                "5. Promotion Management\n" +
+                "6. Exit\n" +
+                "(Please choose a number for accessing to these functions).");
         do {
-            System.out.println("FURAMA MANAGEMENT SYSTEM\n" +
-                    "1. Employee Management\n" +
-                    "2. Customer Management\n" +
-                    "3. Facility Management\n" +
-                    "4. Booking Management\n" +
-                    "5. Promotion Management\n" +
-                    "6. Exit\n" +
-                    "(Please choose a number for accessing to these functions).");
             System.out.print("Enter your number: ");
-            choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
-                case 1:
-                    EmployeeManageMent();
-                    break;
-                case 2:
-                    customerManagement();
-                    break;
-                case 3:
-                    facilityManagement();
-                    break;
-                case 4:
-                    System.out.println("BOOKING MANAGEMENT");
-                    System.out.println("1.\tAdd new booking\n" +
-                            "2.\tDisplay list booking\n" +
-                            "3.\tCreate new constracts\n" +
-                            "4.\tDisplay list contracts\n" +
-                            "5.\tEdit contracts\n" +
-                            "6.\tReturn main menu\n");
-                    break;
-                case 5:
-                    System.out.println("PROMOTION MANAGEMENT");
-                    System.out.println("1.\tDisplay list customers use service\n" +
-                            "2.\tDisplay list customers get voucher\n" +
-                            "3.\tReturn main menu\n");
-                    break;
-                case 6:
-                    System.exit(6);
-                default:
-                    System.out.println("No choice!");
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        EmployeeManageMent();
+                        break;
+                    case 2:
+                        customerManagement();
+                        break;
+                    case 3:
+                        facilityManagement();
+                        break;
+                    case 4:
+                        System.out.println("BOOKING MANAGEMENT");
+                        System.out.println("1.\tAdd new booking\n" +
+                                "2.\tDisplay list booking\n" +
+                                "3.\tCreate new constracts\n" +
+                                "4.\tDisplay list contracts\n" +
+                                "5.\tEdit contracts\n" +
+                                "6.\tReturn main menu\n");
+                        break;
+                    case 5:
+                        System.out.println("PROMOTION MANAGEMENT");
+                        System.out.println("1.\tDisplay list customers use service\n" +
+                                "2.\tDisplay list customers get voucher\n" +
+                                "3.\tReturn main menu\n");
+                        break;
+                    case 6:
+                        System.exit(6);
+                    default:
+                        System.out.println("No choice!");
+                }
+            } catch (NumberFormatException exception) {
+                System.out.print("Wrong format, only NUMBER accepted, please type again: ");
+            } catch (Exception exception) {
+                exception.printStackTrace();
             }
         } while (true);
     }
