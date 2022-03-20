@@ -25,10 +25,26 @@ public class CustomerServiceImpl implements ICustomerService {
         String customerName = scanner.nextLine();
         System.out.print("Input Customer gender: ");
         String customerSex = scanner.nextLine();
-        System.out.print("Input Customer ID Number: ");
-        int customerIDNumber = Integer.parseInt(scanner.nextLine());
-        System.out.print("Input Customer phone number: ");
-        int customerPhoneNumber = Integer.parseInt(scanner.nextLine());
+        int customerIDNumber;
+        do {
+            try {
+                System.out.print("Input Customer ID Number: ");
+                customerIDNumber = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Please type NUMBER only, try again: ");
+            }
+        } while (true);
+        int customerPhoneNumber;
+        do {
+            try {
+                System.out.print("Input Customer phone number: ");
+                customerPhoneNumber = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Please type NUMBER only, try again: ");
+            }
+        } while (true);
         System.out.print("Input Customer email: ");
         String customerEmail = scanner.nextLine();
         System.out.print("Input Customer Identify Code: ");
@@ -51,21 +67,38 @@ public class CustomerServiceImpl implements ICustomerService {
 
     @Override
     public void edit() {
+        display();
+        boolean isFound = false;
         System.out.print("Please input the ID of Customer that want to edit: ");
         int idCustomerNeedToFind = Integer.parseInt(scanner.nextLine());
         for (Customer customerEdit : customerList) {
             if (idCustomerNeedToFind == (customerEdit.getPersonIDNumber())) {
-                System.out.print("Input information you want to edit\n" +
-                        "1. Edit employee name:\n" +
-                        "2. Edit employee gender:\n" +
-                        "3. Edit employee ID Number:\n" +
-                        "4. Edit employee phone Number:\n" +
-                        "5. Edit employee email:\n" +
-                        "6. Edit employee Identify Code:\n" +
-                        "7. Edit employee Rank level:\n" +
-                        "8. Edit employee Address:\n" +
-                        "9. Exit\n" +
-                        "(Please choose a number for accessing to these functions).");
+                editProperties(customerEdit);
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound == false) {
+            System.out.println("Cannot find your input ID.");
+        }
+    }
+
+    private void editProperties(Customer customerEdit) {
+        System.out.print("Input information you want to edit\n" +
+                "1. Edit employee name:\n" +
+                "2. Edit employee gender:\n" +
+                "3. Edit employee ID Number:\n" +
+                "4. Edit employee phone Number:\n" +
+                "5. Edit employee email:\n" +
+                "6. Edit employee Identify Code:\n" +
+                "7. Edit employee Rank level:\n" +
+                "8. Edit employee Address:\n" +
+                "9. Exit\n" +
+                "(Please choose a number for accessing to these functions).");
+        String confirmContinue;
+        do {
+            try {
+                System.out.println("CUSTOMER MANAGEMENT");
                 System.out.print("Enter your number: ");
                 int choice;
                 choice = Integer.parseInt(scanner.nextLine());
@@ -103,13 +136,19 @@ public class CustomerServiceImpl implements ICustomerService {
                         customerEdit.setAddress(scanner.nextLine());
                         break;
                     case 9:
-                        System.exit(10);
+                        System.exit(9);
                         break;
                     default:
-                        System.out.print("NO CHOICE!");
+                        System.out.println("Please input number from 1-9!: ");
                 }
-                break;
+                System.out.println("Do you want to continue? (Y/N): ");
+                confirmContinue = scanner.nextLine();
+                if (confirmContinue.toUpperCase().equals("N")) {
+                    break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Only number accepted ");
             }
-        }
+        } while (true);
     }
 }

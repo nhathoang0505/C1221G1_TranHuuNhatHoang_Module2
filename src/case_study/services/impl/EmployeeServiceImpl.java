@@ -21,22 +21,41 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     @Override
     public void edit() {
+        display();
+        boolean isFound = false;
         System.out.print("Please input the ID of employee that want to edit: ");
         int idEmployeeNeedToFind = Integer.parseInt(scanner.nextLine());
         for (Employee employeeEdit : employeeList) {
             if (idEmployeeNeedToFind == (employeeEdit.getPersonIDNumber())) {
-                System.out.print("Input information you want to edit\n" +
-                        "1. Edit employee name:\n" +
-                        "2. Edit employee gender:\n" +
-                        "3. Edit employee ID Number:\n" +
-                        "4. Edit employee phone Number:\n" +
-                        "5. Edit employee email:\n" +
-                        "6. Edit employee Identify Code:\n" +
-                        "7. Edit employee academic level:\n" +
-                        "8. Edit employee position:\n" +
-                        "9. Edit employee salary:\n" +
-                        "10. Exit\n" +
-                        "(Please choose a number for accessing to these functions).");
+                editProperties(employeeEdit);
+                isFound = true;
+                break;
+            }
+        }
+        if (isFound == false) {
+            System.out.println("Cannot find your input ID ");
+        }
+        ReadAndWriteFile.writeListEmployeeToCSV(EMPLOYEE_PATH, employeeList);
+    }
+
+    private void editProperties(Employee employeeEdit) {
+        System.out.println("Employee Editing Menu");
+        System.out.print("Input information you want to edit\n" +
+                "1. Edit employee name:\n" +
+                "2. Edit employee gender:\n" +
+                "3. Edit employee ID Number:\n" +
+                "4. Edit employee phone Number:\n" +
+                "5. Edit employee email:\n" +
+                "6. Edit employee Identify Code:\n" +
+                "7. Edit employee academic level:\n" +
+                "8. Edit employee position:\n" +
+                "9. Edit employee salary:\n" +
+                "10. Exit\n" +
+                "(Please choose a number for accessing to these functions).\n");
+        String confirmContinue;
+        do {
+            try {
+                System.out.println("EMPLOYEE Editing Menu");
                 System.out.print("Enter your number: ");
                 int choice;
                 choice = Integer.parseInt(scanner.nextLine());
@@ -77,16 +96,21 @@ public class EmployeeServiceImpl implements IEmployeeService {
                         System.out.print("Input new SALARY for Employee: ");
                         employeeEdit.setSalary(Double.parseDouble(scanner.nextLine()));
                         break;
-                    case 10:
+                    case 0:
                         System.exit(10);
                         break;
                     default:
                         System.out.print("NO CHOICE!");
                 }
+            } catch (NumberFormatException e) {
+                System.out.println("Only NUMBER accepted");
+            }
+            System.out.println("Do you want to continue? (Y/N): ");
+            confirmContinue = scanner.nextLine();
+            if (confirmContinue.toUpperCase().equals("N")) {
                 break;
             }
-        }
-        ReadAndWriteFile.writeListEmployeeToCSV(EMPLOYEE_PATH, employeeList);
+        } while (true);
     }
 
     @Override
@@ -95,10 +119,26 @@ public class EmployeeServiceImpl implements IEmployeeService {
         String employeeName = scanner.nextLine();
         System.out.print("Input employee GENDER: ");
         String employeSex = scanner.nextLine();
-        System.out.print("Input employee ID Number: ");
-        int employeeIDNumber = Integer.parseInt(scanner.nextLine());
-        System.out.print("Input employee phone number: ");
-        int employeePhoneNumber = Integer.parseInt(scanner.nextLine());
+        int employeeIDNumber;
+        do {
+            try {
+                System.out.print("Input employee ID Number: ");
+                employeeIDNumber = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Only NUMBER accepted");
+            }
+        } while (true);
+        int employeePhoneNumber;
+        do {
+            try {
+                System.out.print("Input employee phone number: ");
+                employeePhoneNumber = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Only NUMBER accepted");
+            }
+        } while (true);
         System.out.print("Input employee email: ");
         String employeeEmail = scanner.nextLine();
         System.out.print("Input employee Identify Card: ");
@@ -107,8 +147,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
         String academicLevel = scanner.nextLine();
         System.out.print("Input employee position: ");
         String position = scanner.nextLine();
-        System.out.print("Input employee salary: ");
-        double salary = Double.parseDouble(scanner.nextLine());
+        double salary;
+        do {
+            try {
+                System.out.print("Input employee salary: ");
+                salary = Double.parseDouble(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("Only NUMBER accepted");
+            }
+        } while (true);
         Employee employee = new Employee(employeeName, employeSex, employeeIDNumber, employeePhoneNumber, employeeEmail, employeeID, academicLevel, position, salary);
         employeeList.add(employee);
         ReadAndWriteFile.writeListEmployeeToCSV(EMPLOYEE_PATH, employeeList);

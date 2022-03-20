@@ -14,49 +14,66 @@ public class FuramaController {
 
     public void EmployeeManageMent() {
         int choice = -1;
-        System.out.println("EMPLOYEE MANAGEMENT");
-        System.out.println("1\tDisplay list employees\n" +
-                "2\tAdd new employee\n" +
-                "3\tEdit employee\n" +
-                "4\tReturn main menu\n");
-        System.out.print("Enter your number: ");
-        choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                employeeService.display();
-                break;
-            case 2:
-                employeeService.add();
-                break;
-            case 3:
-                employeeService.edit();
-                break;
-            case 4:
-                break;
-        }
+        boolean flag = true;
+        do {
+            System.out.println("EMPLOYEE MANAGEMENT");
+            System.out.println("1\tDisplay list employees\n" +
+                    "2\tAdd new employee\n" +
+                    "3\tEdit employee\n" +
+                    "4\tReturn main menu\n");
+            System.out.print("Input your choice: ");
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        employeeService.display();
+                        break;
+                    case 2:
+                        employeeService.add();
+                        break;
+                    case 3:
+                        employeeService.edit();
+                        break;
+                    case 0:
+                        flag = false;
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Only NUMBER accepted");
+            }
+        } while (flag);
     }
 
     public void customerManagement() {
         int choice = -1;
-        System.out.println("CUSTOMER MANAGEMENT");
-        System.out.println("1.\tDisplay list customers\n" +
-                "2.\tAdd new customer\n" +
-                "3.\tEdit customer\n" +
-                "4.\tReturn main menu\n");
-        choice = Integer.parseInt(scanner.nextLine());
-        switch (choice) {
-            case 1:
-                customerService.display();
-                break;
-            case 2:
-                customerService.add();
-                break;
-            case 3:
-                customerService.edit();
-                break;
-            case 4:
-                break;
-        }
+        boolean flag = true;
+        do {
+            System.out.println("CUSTOMER MANAGEMENT");
+            System.out.println("1.\tDisplay list customers\n" +
+                    "2.\tAdd new customer\n" +
+                    "3.\tEdit customer\n" +
+                    "0.\tReturn main menu\n");
+            try {
+                System.out.print("Input your choice: ");
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        customerService.display();
+                        break;
+                    case 2:
+                        customerService.add();
+                        break;
+                    case 3:
+                        customerService.edit();
+                        break;
+                    case 0:
+                        flag = false;
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Only NUMBER accepted");
+            }
+        } while (flag);
     }
 
     public void facilityManagement() {
@@ -65,7 +82,7 @@ public class FuramaController {
         System.out.println("1.\tDisplay list facility\n" +
                 "2.\tAdd new facility\n" +
                 "3.\tDisplay list facility maintenance\n" +
-                "4.\tReturn main menu\n");
+                "0.\tReturn main menu\n");
         choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
@@ -77,7 +94,7 @@ public class FuramaController {
             case 3:
                 facilityService.displayMaintaince();
                 break;
-            case 4:
+            case 0:
                 break;
         }
     }
@@ -89,7 +106,7 @@ public class FuramaController {
         System.out.println("1.\tAdd new Villa\n" +
                 "2.\tAdd new House\n" +
                 "3.\tAdd new Room\n" +
-                "4.\tReturn main menu\n");
+                "0.\tReturn main menu\n");
         choice = Integer.parseInt(scanner.nextLine());
         switch (choice) {
             case 1:
@@ -104,22 +121,22 @@ public class FuramaController {
                 facilityService.addNewRoom();
                 addNewFacilityMenu();
                 break;
-            case 4:
+            case 0:
                 break;
         }
     }
 
     public void displayMainMenu() {
         int choice = -1;
-        System.out.println("FURAMA MANAGEMENT SYSTEM\n" +
-                "1. Employee Management\n" +
-                "2. Customer Management\n" +
-                "3. Facility Management\n" +
-                "4. Booking Management\n" +
-                "5. Promotion Management\n" +
-                "6. Exit\n" +
-                "(Please choose a number for accessing to these functions).");
         do {
+            System.out.println("FURAMA MANAGEMENT SYSTEM\n" +
+                    "1. Employee Management\n" +
+                    "2. Customer Management\n" +
+                    "3. Facility Management\n" +
+                    "4. Booking Management\n" +
+                    "5. Promotion Management\n" +
+                    "0. Exit\n" +
+                    "(Please choose a number for accessing to these functions).");
             System.out.print("Enter your number: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -148,8 +165,8 @@ public class FuramaController {
                                 "2.\tDisplay list customers get voucher\n" +
                                 "3.\tReturn main menu\n");
                         break;
-                    case 6:
-                        System.exit(6);
+                    case 0:
+                        System.exit(0);
                     default:
                         System.out.println("No choice!");
                 }

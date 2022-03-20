@@ -65,7 +65,7 @@ public abstract class Person {
     public String toString() {
         return
                 "personName='" + personName + '\'' +
-                        ", sex='" + gender + '\'' +
+                        ", gender='" + gender + '\'' +
                         ", personIDNumber=" + personIDNumber +
                         ", phoneNumber=" + phoneNumber +
                         ", personEmail='" + personEmail + '\'' + ",";
