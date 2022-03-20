@@ -20,7 +20,7 @@ public class FuramaController {
             System.out.println("1\tDisplay list employees\n" +
                     "2\tAdd new employee\n" +
                     "3\tEdit employee\n" +
-                    "4\tReturn main menu\n");
+                    "0\tReturn main menu\n");
             System.out.print("Input your choice: ");
             try {
                 choice = Integer.parseInt(scanner.nextLine());
@@ -171,7 +171,7 @@ public class FuramaController {
                         System.out.println("No choice!");
                 }
             } catch (NumberFormatException exception) {
-                System.out.print("Wrong format, only NUMBER accepted, please type again: ");
+                System.out.println("Wrong format, only NUMBER accepted, please type again: ");
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
