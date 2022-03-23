@@ -9,7 +9,8 @@ public class Customer extends Person {
         super(personName, gender, personIDNumber, phoneNumber, personEmail);
     }
 
-    public Customer(String personName, String sex, int personIDNumber, int phoneNumber, String personEmail, String customerID, String customerRank, String address) {
+    public Customer(String personName, String sex, int personIDNumber,
+                    int phoneNumber, String personEmail, String customerID, String customerRank, String address) {
         super(personName, sex, personIDNumber, phoneNumber, personEmail);
         this.customerID = customerID;
         this.customerRank = customerRank;

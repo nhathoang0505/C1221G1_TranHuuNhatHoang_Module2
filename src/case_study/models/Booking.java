@@ -1,14 +1,15 @@
 package case_study.models;
 
 public class Booking {
-    private String bookingCode;
+    private int bookingCode;
     private String startDate;
     private String endDate;
     private String customerID;
     private String serviceName;
     private String serviceType;
 
-    public Booking(String bookingCode, String startDate, String endDate, String customerID, String serviceName, String serviceType) {
+    public Booking(int bookingCode, String startDate, String endDate, String customerID,
+                   String serviceName, String serviceType) {
         this.bookingCode = bookingCode;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -17,11 +18,11 @@ public class Booking {
         this.serviceType = serviceType;
     }
 
-    public String getBookingCode() {
+    public int getBookingCode() {
         return bookingCode;
     }
 
-    public void setBookingCode(String bookingCode) {
+    public void setBookingCode(int bookingCode) {
         this.bookingCode = bookingCode;
     }
 

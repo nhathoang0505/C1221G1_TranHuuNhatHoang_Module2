@@ -49,14 +49,31 @@ public class CustomerServiceImpl implements ICustomerService {
         String customerEmail = scanner.nextLine();
         System.out.print("Input Customer Identify Code: ");
         String customerID = scanner.nextLine();
-        System.out.print("Input Customer RANK level: ");
-        String customerRank = scanner.nextLine();
+        String customerRank = customerRank();
         System.out.print("Input Customer address: ");
         String customerAddress = scanner.nextLine();
         Customer customer = new Customer(customerName, customerSex, customerIDNumber, customerPhoneNumber, customerEmail, customerID, customerRank, customerAddress);
         customerList.add(customer);
         ReadAndWriteFile.writeListCustomerToCSV(CUSTOMER_PATH, customerList);
     }
+
+    private String customerRank() {
+        String[] arrayRank = {"Diamond", "Platinum", "Gold", "Silver", "Member"};
+        System.out.print("Input Customer RANK level: ");
+        do {
+            System.out.println(" Input RANK of Customer:\n 1.Diamond\n 2.Platinium\n 3.Gold\n 4.Silver\n 5.Member");
+            int choice = -1;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                return arrayRank[choice-1];
+            } catch (NumberFormatException e) {
+                System.out.println("Only number accepted");
+            }catch (ArrayIndexOutOfBoundsException e){
+                System.out.println("Only input from 1 - "+arrayRank.length);
+            }
+        } while (true);
+    }
+
 
     @Override
     public void display() {
